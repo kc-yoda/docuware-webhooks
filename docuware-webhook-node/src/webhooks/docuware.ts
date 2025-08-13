@@ -1,10 +1,9 @@
 import Router, { Request, Response } from 'express';
 import crypto from 'crypto';
-import { buffer } from 'stream/consumers';
 
 
 const docuware = Router();
-const secretkey =  process.env.DW_PASSPHRASE || ""; //']NL7]Mc;p/IE\\`y%';
+const secretkey =  process.env.DW_PASSPHRASE || "";
 
 
 

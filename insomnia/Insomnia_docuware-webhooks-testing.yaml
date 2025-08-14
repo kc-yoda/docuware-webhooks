@@ -1,0 +1,379 @@
+type: collection.insomnia.rest/5.0
+name: DocuWare Webhooks
+meta:
+  id: wrk_c734b6bb7165412ea306e71e062d417c
+  created: 1754671024723
+  modified: 1754671024723
+collection:
+  - url: http://localhost:3000/
+    name: (NODE) GET Status request
+    meta:
+      id: req_4b45ed30633e47f6a4036a5d5b18b606
+      created: 1754671029593
+      modified: 1755124800840
+      isPrivate: false
+      sortKey: -1754671029593
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/webhooks/docuware/
+    name: (NODE) GET invalid request to docuware webhook
+    meta:
+      id: req_2b2ed0ef62554dd1a8b5b47e80730d07
+      created: 1754671076537
+      modified: 1755124794227
+      isPrivate: false
+      sortKey: -1754671076537
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:5011/webhooks/docuware
+    name: (CSHARP) POST Send json to service for logging and expect 202
+    meta:
+      id: req_612a2d2f69634bf38aabcd7ce91ac28b
+      created: 1754671113754
+      modified: 1755121496363
+      isPrivate: false
+      sortKey: -1754671113754
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+         "DOCUMENT_TYPE": "Invoice In",
+         "COMPANY_NAME": "STORAGE EXPERTS INC.",
+         "COMPANY_NAME2": "STORAGE EXPERTS INC.",
+         "COMPANY_STREET": null,
+         "COMPANY_ZIP": null,
+         "COMPANY_CITY": null,
+         "COMPANY_STATE": null,
+         "COMPANY_PHONE": null,
+         "COMPANY_EMAIL": null,
+         "COMPANY_WEBSITE": null,
+         "COMPANY_NUMBER": "1",
+         "COMPANY_ACCOUNT": null,
+         "DOCUMENT_NUMBER": "126496836",
+         "DOCUMENT_DATE": "2022-12-20T00:00:00",
+         "DUE_DATE": "2022-12-20T00:00:00",
+         "COST_CENTER": null,
+         "ORDER_NUMBER": null,
+         "INVOICE_NUMBER": null,
+         "DELIVERY_NOTE_NUMBER": null,
+         "STORED_ON": "2023-07-12T00:00:00",
+         "STORED_BY": "chris.gritton.admin",
+         "LAST_ACCESS_ON": "2023-07-12T00:00:00",
+         "LAST_ACCESS_BY": "chris.gritton.admin",
+         "LAST_MODIFICATION_ON": "2023-07-12T00:00:00",
+         "LAST_MODIFICATION_BY": "chris.gritton.admin",
+         "ORDER_NUMBER1": "1154967",
+         "STATUS": "For Approval",
+         "DOCUMENT_YEAR": "2022",
+         "DOCUMENT_MONTH": "Dec",
+         "GL_COSTCENTER_GROUPS": null,
+         "GL_DONE": null,
+         "DOCUMENT_LINK": "/DocuWare/Platform/Webclient/Integration?fc=&p=V&did=16",
+         "VALIDATIONSTATUS": null,
+         "PROCESS_AND_DURATION": {"UpdateStatus":null,"Values":["IP - 1 Validation: 1 Minute(s)"],"currentTag":0,"IgnoreInvalidEnums":false},
+         "PROCESS_STATUS": "EXPORTED",
+         "INVOICE_DURATION": "1 Minute(s)",
+         "REQUESTOR": null,
+         "PO_UPDATE": null,
+         "PO_VALUE_UPDATE": null,
+         "REASON": null,
+         "PAYMENT_DETAILS": null,
+         "PAYMENT_METHOD": null,
+         "PAYMENT_DATE": null,
+         "SUBSIDIARY_NAME": "Subsidiary 1",
+         "COSTCENTER_NUMBER": null,
+         "COMPANY_NUMBER_LIST": null,
+         "ACCOUNTING_PERIOD": null,
+         "GL_PREFILL_OPTION": null,
+         "SUBSIDIARY_NUMBER": null,
+         "E_ONE_STATUS": null,
+         "E_ONE_MESSAGE": null,
+         "E_ONE_EXTERNAL_ID": null,
+         "QB_VENDOR_ID": "Alpha Beta",
+         "QB_ACCOUNT_ID": "33",
+         "QB_TRANSACTION_DATE": "2025-06-26T00:00:00",
+         "DWEXTENSION": ".pdf",
+         "DWDOCID": 80,
+         "DWSECTIONCOUNT": 1,
+         "DWSTOREDATETIME": "2023-11-21T17:37:21",
+         "DWSTOREUSER": "USER1"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_47d916858b774d2fa4230f152e667595
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_1c4905a85b01432da89c124593ca28f0
+      - id: pair_46da85d82dc2484e805f60309db7338d
+        name: x-docuware-signature
+        value: 9e6c9922779a1b8ef4f8a2e968b80c99de323c8e493637bc39276678abf8f175d82ef99c12b8f179c5862e9ab90d75193de1b6109c33c308de93a87c4cedc161
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/webhooks/docuware
+    name: (NODE) POST Send json to service for logging and expect 202
+    meta:
+      id: req_512d51f562d546ae85ba3aeb41655c64
+      created: 1755121463671
+      modified: 1755121463671
+      isPrivate: false
+      sortKey: -1754671095145.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+         "DOCUMENT_TYPE": "Invoice In",
+         "COMPANY_NAME": "STORAGE EXPERTS INC.",
+         "COMPANY_NAME2": "STORAGE EXPERTS INC.",
+         "COMPANY_STREET": null,
+         "COMPANY_ZIP": null,
+         "COMPANY_CITY": null,
+         "COMPANY_STATE": null,
+         "COMPANY_PHONE": null,
+         "COMPANY_EMAIL": null,
+         "COMPANY_WEBSITE": null,
+         "COMPANY_NUMBER": "1",
+         "COMPANY_ACCOUNT": null,
+         "DOCUMENT_NUMBER": "126496836",
+         "DOCUMENT_DATE": "2022-12-20T00:00:00",
+         "DUE_DATE": "2022-12-20T00:00:00",
+         "COST_CENTER": null,
+         "ORDER_NUMBER": null,
+         "INVOICE_NUMBER": null,
+         "DELIVERY_NOTE_NUMBER": null,
+         "STORED_ON": "2023-07-12T00:00:00",
+         "STORED_BY": "chris.gritton.admin",
+         "LAST_ACCESS_ON": "2023-07-12T00:00:00",
+         "LAST_ACCESS_BY": "chris.gritton.admin",
+         "LAST_MODIFICATION_ON": "2023-07-12T00:00:00",
+         "LAST_MODIFICATION_BY": "chris.gritton.admin",
+         "ORDER_NUMBER1": "1154967",
+         "STATUS": "For Approval",
+         "DOCUMENT_YEAR": "2022",
+         "DOCUMENT_MONTH": "Dec",
+         "GL_COSTCENTER_GROUPS": null,
+         "GL_DONE": null,
+         "DOCUMENT_LINK": "/DocuWare/Platform/Webclient/Integration?fc=&p=V&did=16",
+         "VALIDATIONSTATUS": null,
+         "PROCESS_AND_DURATION": {"UpdateStatus":null,"Values":["IP - 1 Validation: 1 Minute(s)"],"currentTag":0,"IgnoreInvalidEnums":false},
+         "PROCESS_STATUS": "EXPORTED",
+         "INVOICE_DURATION": "1 Minute(s)",
+         "REQUESTOR": null,
+         "PO_UPDATE": null,
+         "PO_VALUE_UPDATE": null,
+         "REASON": null,
+         "PAYMENT_DETAILS": null,
+         "PAYMENT_METHOD": null,
+         "PAYMENT_DATE": null,
+         "SUBSIDIARY_NAME": "Subsidiary 1",
+         "COSTCENTER_NUMBER": null,
+         "COMPANY_NUMBER_LIST": null,
+         "ACCOUNTING_PERIOD": null,
+         "GL_PREFILL_OPTION": null,
+         "SUBSIDIARY_NUMBER": null,
+         "E_ONE_STATUS": null,
+         "E_ONE_MESSAGE": null,
+         "E_ONE_EXTERNAL_ID": null,
+         "QB_VENDOR_ID": "Alpha Beta",
+         "QB_ACCOUNT_ID": "33",
+         "QB_TRANSACTION_DATE": "2025-06-26T00:00:00",
+         "DWEXTENSION": ".pdf",
+         "DWDOCID": 80,
+         "DWSECTIONCOUNT": 1,
+         "DWSTOREDATETIME": "2023-11-21T17:37:21",
+         "DWSTOREUSER": "USER1"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_47d916858b774d2fa4230f152e667595
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_1c4905a85b01432da89c124593ca28f0
+      - id: pair_46da85d82dc2484e805f60309db7338d
+        name: x-docuware-signature
+        value: 9e6c9922779a1b8ef4f8a2e968b80c99de323c8e493637bc39276678abf8f175d82ef99c12b8f179c5862e9ab90d75193de1b6109c33c308de93a87c4cedc161
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://docuscripts.kelleycreate.com/webhooks/webhooks/docuware
+    name: (NODE - PROD) POST Send json to service for logging and expect 202
+    meta:
+      id: req_08a5fc5391164b1095864782835ac773
+      created: 1755124549188
+      modified: 1755124567428
+      isPrivate: false
+      sortKey: -1754671085841.25
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+         "DOCUMENT_TYPE": "Invoice In",
+         "COMPANY_NAME": "STORAGE EXPERTS INC.",
+         "COMPANY_NAME2": "STORAGE EXPERTS INC.",
+         "COMPANY_STREET": null,
+         "COMPANY_ZIP": null,
+         "COMPANY_CITY": null,
+         "COMPANY_STATE": null,
+         "COMPANY_PHONE": null,
+         "COMPANY_EMAIL": null,
+         "COMPANY_WEBSITE": null,
+         "COMPANY_NUMBER": "1",
+         "COMPANY_ACCOUNT": null,
+         "DOCUMENT_NUMBER": "126496836",
+         "DOCUMENT_DATE": "2022-12-20T00:00:00",
+         "DUE_DATE": "2022-12-20T00:00:00",
+         "COST_CENTER": null,
+         "ORDER_NUMBER": null,
+         "INVOICE_NUMBER": null,
+         "DELIVERY_NOTE_NUMBER": null,
+         "STORED_ON": "2023-07-12T00:00:00",
+         "STORED_BY": "chris.gritton.admin",
+         "LAST_ACCESS_ON": "2023-07-12T00:00:00",
+         "LAST_ACCESS_BY": "chris.gritton.admin",
+         "LAST_MODIFICATION_ON": "2023-07-12T00:00:00",
+         "LAST_MODIFICATION_BY": "chris.gritton.admin",
+         "ORDER_NUMBER1": "1154967",
+         "STATUS": "For Approval",
+         "DOCUMENT_YEAR": "2022",
+         "DOCUMENT_MONTH": "Dec",
+         "GL_COSTCENTER_GROUPS": null,
+         "GL_DONE": null,
+         "DOCUMENT_LINK": "/DocuWare/Platform/Webclient/Integration?fc=&p=V&did=16",
+         "VALIDATIONSTATUS": null,
+         "PROCESS_AND_DURATION": {"UpdateStatus":null,"Values":["IP - 1 Validation: 1 Minute(s)"],"currentTag":0,"IgnoreInvalidEnums":false},
+         "PROCESS_STATUS": "EXPORTED",
+         "INVOICE_DURATION": "1 Minute(s)",
+         "REQUESTOR": null,
+         "PO_UPDATE": null,
+         "PO_VALUE_UPDATE": null,
+         "REASON": null,
+         "PAYMENT_DETAILS": null,
+         "PAYMENT_METHOD": null,
+         "PAYMENT_DATE": null,
+         "SUBSIDIARY_NAME": "Subsidiary 1",
+         "COSTCENTER_NUMBER": null,
+         "COMPANY_NUMBER_LIST": null,
+         "ACCOUNTING_PERIOD": null,
+         "GL_PREFILL_OPTION": null,
+         "SUBSIDIARY_NUMBER": null,
+         "E_ONE_STATUS": null,
+         "E_ONE_MESSAGE": null,
+         "E_ONE_EXTERNAL_ID": null,
+         "QB_VENDOR_ID": "Alpha Beta",
+         "QB_ACCOUNT_ID": "33",
+         "QB_TRANSACTION_DATE": "2025-06-26T00:00:00",
+         "DWEXTENSION": ".pdf",
+         "DWDOCID": 80,
+         "DWSECTIONCOUNT": 1,
+         "DWSTOREDATETIME": "2023-11-21T17:37:21",
+         "DWSTOREUSER": "USER1"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_47d916858b774d2fa4230f152e667595
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_1c4905a85b01432da89c124593ca28f0
+      - id: pair_46da85d82dc2484e805f60309db7338d
+        name: x-docuware-signature
+        value: 9e6c9922779a1b8ef4f8a2e968b80c99de323c8e493637bc39276678abf8f175d82ef99c12b8f179c5862e9ab90d75193de1b6109c33c308de93a87c4cedc161
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://docuscripts.kelleycreate.com/webhooks/
+    name: (NODE PROD) GET Status request
+    meta:
+      id: req_22d8f47a55b841c4a40cddb1b25d129e
+      created: 1755124726671
+      modified: 1755124743291
+      isPrivate: false
+      sortKey: -1753688336091.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://docuscripts.kelleycreate.com/webhooks/webhooks/docuware/
+    name: (NODE PROD) GET invalid request to docuware webhook
+    meta:
+      id: req_6802f3301c3c45d4a2bb0681b6b75212
+      created: 1755124758576
+      modified: 1755124773189
+      isPrivate: false
+      sortKey: -1754671053065
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_aa373e1bc9ccd02d941e641f33d1ab1a6e5a9993
+    created: 1754671024728
+    modified: 1754671024728
+environments:
+  name: Base Environment
+  meta:
+    id: env_aa373e1bc9ccd02d941e641f33d1ab1a6e5a9993
+    created: 1754671024725
+    modified: 1754671024725
+    isPrivate: false

@@ -8,6 +8,8 @@ If you have Newtonsoft.Json available you may potentially be able to get seriali
 
 ## Initialize
 
+Add Environment Variable "DW_PASSPHRASE" and set the value to your DocuWare system passphrase
+
 run 'npm install' in the docuware-webhook-node directory
 
 To run in development mode: run 'npm run dev'

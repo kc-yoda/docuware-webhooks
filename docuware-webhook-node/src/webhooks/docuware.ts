@@ -1,5 +1,6 @@
 import Router, { Request, Response } from 'express';
 import crypto from 'crypto';
+import { buffer } from 'stream/consumers';
 
 
 const docuware = Router();
@@ -15,12 +16,19 @@ docuware.get("/", (req: Request, res: Response) => {
 docuware.post("/", (req: Request, res: Response) => {
     console.info(`DocuWare webhook processed request from ${req.ip}`);
 
-    let validationResult = verifyHMAC(req, res, Buffer.from(JSON.stringify(req.body), 'utf-8'));
+    let validationResult = verifyHMAC(req, res, Buffer.from(JSON.stringify(req.body, (key: string, value: any) => {
+            if (typeof value === 'number') {
+                console.debug(`Minifying number value: ${value}`);
+                // Minify number values to 2 decimal places
+                return  Number(value.toFixed(2)); // Convert to fixed decimal places and then back to a number
+            }
+            return value;
+        }), 'utf-8'));
 
     res.status(202).send({ message: validationResult?.message, raw: req.body, expectedsignature: validationResult?.expectedsignature, actualsignature: validationResult?.actualsignature, payload: validationResult?.payload });
 });
 
-function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: string, raw?: string, expectedsignature?: string, actualsignature?: string, payload?: string, valid?: boolean} | null
+function verifyHMAC(req: Request, res: Response, buf: Buffer, test?: boolean) : { message: string, raw?: string, expectedsignature?: string, actualsignature?: string, payload?: string, valid?: boolean} | null
 {
     //shared function so we can call from middleware or from a request so that we can return JSON object with details about validation
     
@@ -31,6 +39,11 @@ function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: strin
         console.info(`[Validation] Evaluating docuware signature ${docsig}`);
         
         let bufferStr = JSON.stringify(JSON.parse(buf.toString())); //minify
+
+        if (test) bufferStr = bufferStr.replace("\"NET_AMOUNT\":578", "\"NET_AMOUNT\":578.00"); // ensure that NET_AMOUNT is always 2 decimal places
+
+        console.debug(`Buffer string to validate: ${bufferStr}`);
+
         let newBuffer = Buffer.from(bufferStr, 'utf8');
         let keyBuffer = Buffer.from(secretkey, 'utf8');
 
@@ -63,11 +76,20 @@ export function verification(req: Request, res: Response, buf: Buffer) {
     }
     else if (validationResult) 
     {
-        console.info(validationResult.message);
-        console.info(`Raw: ${validationResult.raw}`);
-        console.info(`Payload: ${validationResult.payload}`);
-        console.info(`Expected: ${validationResult.expectedsignature}`);
-        console.info(`Actual: ${validationResult.actualsignature}`);
+         let results: object[] = [];
+        results.push({ message: validationResult.message, raw: buf.toString(), expectedsignature: validationResult.expectedsignature, actualsignature: validationResult.actualsignature, payload: validationResult.payload });
+        validationResult = verifyHMAC(req, res, buf, true);
+        results.push({ message: validationResult?.message, raw: buf.toString(), expectedsignature: validationResult?.expectedsignature, actualsignature: validationResult?.actualsignature, payload: validationResult?.payload });
+
+        console.info("----------------------------------------------------------------------------------------------------------------------");
+        console.info(results);
+        console.info("----------------------------------------------------------------------------------------------------------------------");
+
+        console.info(validationResult?.message);
+        console.info(`Raw: ${validationResult?.raw}`);
+        console.info(`Payload: ${validationResult?.payload}`);
+        console.info(`Expected: ${validationResult?.expectedsignature}`);
+        console.info(`Actual: ${validationResult?.actualsignature}`);
         res.status(403).send(buf.toString());
         return res.status(403).send(buf.toString()); 
     }

@@ -9,6 +9,7 @@ namespace DocuWareWebHooks.Controllers
     public class WebhooksController : ControllerBase
     {
 
+        // /webhooks/docuware
         [Route("docuware")]
         [HttpPost]
         public async Task<IActionResult> DocuWare([FromBody] object payload)

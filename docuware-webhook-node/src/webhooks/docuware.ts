@@ -38,12 +38,12 @@ function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: strin
         hmac.update(newBuffer); 
         let generatedHmac = hmac.digest('hex');
 
-        return {message: `Validation processed reesults at ${new Date()} with the validation result: ${generatedHmac === docsig}`, raw: buf.toString(), expectedsignature: docsig, actualsignature: generatedHmac, payload: bufferStr, valid: (generatedHmac === docsig)};
+        return {message: `Validation processed results at ${new Date()} with the validation result: ${generatedHmac === docsig}`, raw: buf.toString(), expectedsignature: docsig, actualsignature: generatedHmac, payload: bufferStr, valid: (generatedHmac === docsig)};
     }
     else
     {
         console.debug(`No docuware signature included`);
-         return {message: `Validation processed reesults at ${new Date()} with the validation result: NO_SIGNATURE_INCLUDED`};
+         return {message: `Validation processed results at ${new Date()} with the validation result: NO_SIGNATURE_INCLUDED`};
     }
 
     return null;

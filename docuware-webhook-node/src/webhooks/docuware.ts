@@ -22,6 +22,8 @@ docuware.post("/", (req: Request, res: Response) => {
 
 function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: string, raw?: string, expectedsignature?: string, actualsignature?: string, payload?: string, valid?: boolean} | null
 {
+    //shared function so we can call from middleware or from a request so that we can return JSON object with details about validation
+    
      const docsig = (Array.isArray(req.headers['x-docuware-signature']) ? req.headers['x-docuware-signature'][0] : req.headers['x-docuware-signature'] as string);
 
     if (docsig)
@@ -48,7 +50,7 @@ function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: strin
 }
 
 export function verification(req: Request, res: Response, buf: Buffer) {
-
+    // this function gets called as middleware 
     let validationResult = verifyHMAC(req, res, buf);
     if (validationResult && validationResult.valid)
     {

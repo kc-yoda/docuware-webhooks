@@ -15,7 +15,7 @@ To build the distribution: run 'npm run build'
 
 ### DocuWare webhooks for initial verification
 
-Limit your initial template to one or two text fields, such as document type and status. This will ensure you have a viable JSON for testing the signature verification. Once you are able to validat the signature consistantly you can modify your webhook template to expand fields as desired and determine if any cause failure points such as including numeric fields for decimal money values. 
+Limit your initial template to one or two text fields, such as document type and status. This will ensure you have a viable JSON for testing the signature verification. Once you are able to validate the signature consistantly you can modify your webhook template to expand fields as desired and determine if any cause failure points such as including numeric fields for decimal money values. 
 We have experienced issues with '5.30' becoming '5.3' in the JSON minification and then the signature is not valid.
 
 

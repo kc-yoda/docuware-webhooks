@@ -21,4 +21,20 @@ Limit your initial template to one or two text fields, such as document type and
 We have experienced issues with '5.30' becoming '5.3' in the JSON minification and then the signature is not valid.
 
 
+# DocuWare has workaround for Newtonsoft library for decimal place preservation
+``` csharp
+
+static string MinifyPreserveScale(string raw)
+{
+   var settings = new JsonSerializerSettings
+   {
+       Culture = CultureInfo.InvariantCulture,
+       FloatParseHandling = FloatParseHandling.Decimal // this should preserve the decimal precision
+
+   };
+   var obj = JsonConvert.DeserializeObject(raw, settings);
+   return JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.None,settings);
+}
+
+```
 

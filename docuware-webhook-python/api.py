@@ -10,6 +10,10 @@ app = Flask(__name__)
 api = Api(app)
 
 class Webhook(Resource):
+    def get(self):
+        print("Received a GET request to /webhooks/docuware/")
+        return {"state": 'invalid request', "version": '1.0', "expected": 'POST'}, 200
+
     def post(self):
         print("Received a POST request to /webhooks/docuware/")
         # Get the request data
@@ -58,7 +62,7 @@ class Webhook(Resource):
         # Implement your webhook processing logic here
         print("Webhook received:", data)
 
-api.add_resource(Webhook, '/webhooks/docuware')
+api.add_resource(Webhook, '/webhooks/docuware', strict_slashes=False)
 
 @app.route('/')
 def index():

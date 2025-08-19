@@ -52,24 +52,17 @@ function verifyHMAC(req: Request, res: Response, buf: Buffer) : { message: strin
 export function verification(req: Request, res: Response, buf: Buffer) {
     // this function gets called as middleware 
     let validationResult = verifyHMAC(req, res, buf);
-    if (validationResult && validationResult.valid)
+
+    
+    if (validationResult)
     {
-        console.info(validationResult.message);
-        console.info(`Raw: ${validationResult.raw}`);
-        console.info(`Payload: ${validationResult.payload}`);
-        console.info(`Expected: ${validationResult.expectedsignature}`);
-        console.info(`Actual: ${validationResult.actualsignature}`);
-        return true;
-    }
-    else if (validationResult) 
-    {
-        console.info(validationResult.message);
-        console.info(`Raw: ${validationResult.raw}`);
-        console.info(`Payload: ${validationResult.payload}`);
-        console.info(`Expected: ${validationResult.expectedsignature}`);
-        console.info(`Actual: ${validationResult.actualsignature}`);
-        res.status(403).send(buf.toString());
-        return res.status(403).send(buf.toString()); 
+         console.info(validationResult.message); 
+         console.info(`Raw: ${validationResult.raw}`);
+         console.info(`Payload: ${validationResult.payload}`);
+         console.info(`Expected: ${validationResult.expectedsignature}`);
+         console.info(`Actual: ${validationResult.actualsignature}`);
+
+        return (validationResult.valid == true ? true : res.status(403).send(buf.toString()));
     }
     else 
     {
